@@ -1,0 +1,19 @@
+name: "PlantUML Generator"
+description: "Generates PlantUML diagrams from .puml files in this repo."
+author: "Your Name"
+inputs:
+  diagram_dir:
+    description: "Directory where the .puml files are located"
+    required: true
+    default: "diagrams"
+  output_dir:
+    description: "Directory where the generated images will be saved"
+    required: true
+    default: "diagrams/output"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.diagram_dir }}
+    - ${{ inputs.output_dir }}

@@ -1,0 +1,46 @@
+name: Generate PlantUML Diagrams
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+    
+      
+      - name: Generate PlantUML diagrams
+        uses: ./.github/actions/plantuml-action  # Reference the custom action in the same repo
+        with:
+          diagram_dir: docs/diagrams  # Specify the directory with .puml files
+          output_dir: docs/diagrams/output  # Specify where to save the generated images
+
+      - name: Upload artifacts for deployment
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-files
+          path: docs
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # Optional, auto generated
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+          - name: Download build artifacts
+            uses: actions/download-artifact@v3
+            with:
+              name: deployment-files
+
+          - name: Deploy to GitHub Pages
+            uses: actions/deploy-pages@v2
+
+
