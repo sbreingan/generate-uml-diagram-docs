@@ -10,12 +10,37 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-    
+
+      # Step 2: Set up Ruby
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0  # You can adjust the Ruby version here
+          bundler-cache: true
+
+      # Step 3: Install Dependencies
+      - name: Install Jekyll and Bundler
+        run: |
+          bundle install
+
       - name: Generate PlantUML diagrams
         uses: ./.github/actions/plantuml-action  # Reference the custom action in the same repo
         with:
           diagram_dir: docs/diagrams  # Specify the directory with .puml files
           output_dir: docs/diagrams/output  # Specify where to save the generated images
+
+
+      # Step 4: Build Jekyll site
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
+
+      # Step 5: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
