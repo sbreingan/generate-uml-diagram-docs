@@ -11,16 +11,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
     
-      
       - name: Generate PlantUML diagrams
         uses: ./.github/actions/plantuml-action  # Reference the custom action in the same repo
         with:
           diagram_dir: docs/diagrams  # Specify the directory with .puml files
           output_dir: docs/diagrams/output  # Specify where to save the generated images
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
