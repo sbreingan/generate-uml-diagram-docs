@@ -37,9 +37,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
+
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
+
+      # Download the artifacts that were uploaded in the 'build' job
+      - name: Download deployment artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: deployment-files
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
