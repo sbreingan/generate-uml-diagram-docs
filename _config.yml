@@ -4,3 +4,23 @@ plugins:
 
 title: [Example Documentation]
 Description: [Architecture documentation generated using Plant UML]
+
+# Source Markdown files from the 'docs' folder
+source: docs
+
+# Plugins for GitHub Pages compatibility
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+
+# Optional: configure permalinks
+permalink: /:title/
+
+# Exclude files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .github
