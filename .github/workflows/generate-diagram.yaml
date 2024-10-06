@@ -41,20 +41,15 @@ jobs:
       - name: Move assets if necessary
         run: if [ -d "diagrams/assets/diagrams" ]; then mv docs diagrams/assets/diagrams/* assets/diagrams/; fi
 
-      # Step 5: Deploy to GitHub Pages
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-      
+
       # Step 4: Build Jekyll site
       - name: Build Jekyll Site
         run: bundle exec jekyll build
 
       # Step 5: Deploy to GitHub Pages
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          path: ./*
-
+        uses: actions/upload-pages-artifact@v3
+      
   deploy:
     environment:
       name: github-pages
