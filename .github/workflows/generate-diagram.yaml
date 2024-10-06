@@ -25,9 +25,9 @@ jobs:
           bundler-cache: true
 
       # Step 3: Install Dependencies
-      - name: Install Jekyll and Bundler
-        run: |
-          bundle install
+      #- name: Install Jekyll and Bundler
+      #  run: |
+      #    bundle install
 
       - name: Create diagrams folder
         run: mkdir -p assets/diagrams
@@ -57,10 +57,10 @@ jobs:
 
     runs-on: ubuntu-latest
     needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+ #   steps:
+ #     - name: Deploy to GitHub Pages
+ #       id: deployment
+ #       uses: actions/deploy-pages@v4
 
 
 
