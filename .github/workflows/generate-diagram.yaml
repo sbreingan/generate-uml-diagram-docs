@@ -38,9 +38,9 @@ jobs:
           diagram_dir: docs/diagrams  # Specify the directory with .puml files
           output_dir: assets/diagrams  # Specify where to save the generated images
       
-      # Step 4: Build Jekyll site
-      - name: Build Jekyll Site
-        run: bundle exec jekyll build
+    #  # Step 4: Build Jekyll site
+    #  - name: Build Jekyll Site
+    #    run: bundle exec jekyll build
 
       # Step 5: Deploy to GitHub Pages
       - name: Upload artifact
