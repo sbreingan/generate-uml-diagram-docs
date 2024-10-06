@@ -4,4 +4,4 @@
 
 This is the architecture diagram.
 
-![image](/diagrams/output/c4-example.png)
+![image](/diagrams/docs/diagrams/output/c4-example.png)
