@@ -37,13 +37,7 @@ jobs:
         with:
           diagram_dir: docs/diagrams  # Specify the directory with .puml files
           output_dir: assets/diagrams  # Specify where to save the generated images
-
-			- name: Move assets if necessary
-  			run: |
-    			if [ -d "docs/diagrams/assets/diagrams" ]; then
-      			mv docs/diagrams/assets/diagrams/* assets/diagrams/
-    		fi
-
+      
       # Step 4: Build Jekyll site
       - name: Build Jekyll Site
         run: bundle exec jekyll build
