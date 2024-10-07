@@ -23,10 +23,20 @@ jobs:
         with:
           ruby-version: 3.0  # You can adjust the Ruby version here
           bundler-cache: true
+        if: ${{ !env.ACT }}  # Skip this step when running locally with act
+
+      - name: Set up Ruby (act)
+        if: ${{ env.ACT }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full
+          ruby --version
+
 
       # Step 3: Install Dependencies
       - name: Install Jekyll and Bundler
         run: |
+          gem install bundler
           bundle install
 
       - name: Create diagrams folder
