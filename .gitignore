@@ -1,3 +1,4 @@
 _site/* 
 .DS_Store
 test_env/*
+build-image.sh

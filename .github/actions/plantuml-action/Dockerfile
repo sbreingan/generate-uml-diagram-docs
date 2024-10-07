@@ -1,7 +1,6 @@
 # Use Amazon Corretto as the base image
-FROM amazoncorretto:21
+FROM amazoncorretto:17
 FROM --platform=linux/amd64 amd64/amazoncorretto:17
-
 
 
 # Install necessary dependencies
@@ -15,7 +14,6 @@ WORKDIR /app
 
 # Download the PlantUML JAR file
 RUN curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar
-
 
 # Set up /github/workspace for the action
 WORKDIR /github/workspace
