@@ -36,10 +36,10 @@ jobs:
         uses: ./.github/actions/plantuml-action  # Reference the custom action in the same repo
         with:
           diagram_dir: docs/diagrams  # Specify the directory with .puml files
-          output_dir: assets/diagrams  # Specify where to save the generated images
+          output_dir: docs/assets/diagrams  # Specify where to save the generated images
 
-      - name: Move assets if necessary
-        run: if [ -d "diagrams/assets/diagrams" ]; then mv docs diagrams/assets/diagrams/* assets/diagrams/; fi
+     # - name: Move assets if necessary
+     #   run: if [ -d "diagrams/assets/diagrams" ]; then mv docs diagrams/assets/diagrams/* assets/diagrams/; fi
 
 
       # Step 4: Build Jekyll site
